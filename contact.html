@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Besar</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+        $(window).on('scroll', function(){
+            if($(window).scrollTop()){
+                $('nav').addClass('white');
+            }
+            else{
+                $('nav').removeClass('white')
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo"> <a href="index.html">
+            <img src="image/logo.png" alt="logo"></a>
+        </div>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tiket.html">Tiket</a></li>
+            <li><a href="contact.html"  class="active">Kontak Kami</a></li>  
+        </ul>
+    </nav>
+
+    <section class="sec3">
+        <div class="form wrapper-text" style="width: 100%;">
+            <h3 class="top" style="margin-top: 250px;" >KONTAK KAMI</h3>
+            <h1 class="headline naik" style="font-size: 72px;">Taman Wisata Alam</h1>
+            <h2 class="sub-headline" style="font-size: 112px; margin: -80px 0px;">Angke Kapuk</h2>
+            
+            <div class="sosmed"></div>              
+                <a href="https://api.whatsapp.com/send?phone=+628111787890" class="btn-sos whatsapp" target="_blank"> <span class="fa fa-whatsapp" style="margin-right: 5px;"></span>  whatsapp</a>
+                <a href="https://www.facebook.com/TWAMangroveAngkeKapuk" class="btn-sos facebook" target="_blank"><span class="fa fa-facebook" style="margin-right: 5px;"></span>  facebook</a>
+                <a href="https://www.instagram.com/twa_mangrove/" class="btn-sos instagram" target="_blank"><span class="fa fa-instagram" style="margin-right: 5px;"></span> Instagram</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script>
+        window.addEventListener('scroll', function(){
+            var wScroll = $(this).scrollTop();
+
+            //parallax
+            const parallax = document.querySelector('.sec1');
+            let scrollPosition = window.pageYOffset;
+
+            parallax.style.transform = 'translateY(' + scrollPosition *.4 + 'px)';
+
+            //fade in
+            if(wScroll > $('.container').offset().top - 650){
+                $('.container .content').addClass('muncul');
+            }
+
+            //fade in card/box
+            if(wScroll > $('.luar').offset().top - 600){
+                $('.luar .box').each(function(i){
+                    setTimeout(function(){
+                        $('.luar .box').eq(i).addClass('muncul')
+                    }, 300 * (i+1));
+                });
+            }
+        });
+
+        $(".readmore-btn").on('click', function(){
+                $(this).parent().toggleClass("showContent");
+
+                var replaceText = $(this).parent().hasClass("ShowContent") ? "Read Less" : "Read More";
+                $(this).text();
+        });
+    </script>
+</body>
+</html>

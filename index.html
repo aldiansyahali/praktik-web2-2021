@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Besar</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(window).on('scroll', function(){
+            if($(window).scrollTop()){
+                $('nav').addClass('white');
+            }
+            else{
+                $('nav').removeClass('white')
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo"> <a href="index.html">
+            <img src="image/logo.png" alt="logo"></a>
+        </div>
+        <ul>
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="tiket.html">Tiket</a></li>
+            <li><a href="contact.html">Kontak Kami</a></li>  
+        </ul>
+    </nav>
+
+    <section class="sec1">
+        <div class="wrapper-text">
+            <h1 class="headline" style="font-size: 72px; margin-top: 110px;">Taman Wisata Alam</h1>
+            <h2 class="sub-headline" style="font-size: 112px; margin-top: -88px;">Angke Kapuk</h2>
+        </div>
+    </section>
+
+    <section class="overflow">
+        <div class="container">
+            <div class="content">
+                <div class="title">
+                    <h1>Taman Wisata Alam (TWA)</h1>
+                    <h2>Angke Kapuk</h2>
+                </div>
+                <hr>
+                <div class="isi">
+                    <p>TWA Angke Kapuk merupakan bagian dari kawasan hutan Angke Kapuk yang ditetapkan berdasarkan Surat Keputusan Gubernur Jenderal Hindia Belanda Nomor 24 tanggal 1 Juni 1939 dengan luasan 99,82 Ha. Tipe ekosistem yang menjadi habitat berbagai jenis burung air ini adalah ekosistem mangrove. Ijin Pengusahaan Pariwisata Alam TWA Angke Kapuk diberikan kepada PT. MURINDRA KARYA LESTARI sejak 1997 dengan tujuan mengembangkan TWA Angke Kapuk sebagai sarana pariwisata alam sekaligus mempertahankan kelestarian fungsi mangrove sebagai sistem penyangga kehidupan.</p><br>
+                    <a href="about.html" class="btn">Selengkapnya...</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="luar">
+            <div class="box">
+                <img src="image/1.jpg" alt="image-box">
+                <div class="text">
+                    <h3>SEJARAH SINGKAT</h3>
+                    <p>Kawasan yang sempat digarap oleh puluhan penambak liar ini mulai direstorasi tahun 1998. Perubahan kawasan dari hutan menjadi areal tambak ikan tidak hanya menghilangkan pepohonan namun juga merusak alam dan ekosistem mangrove. Berbagai kendala dihadapi untuk mengembalikan kawasan ini ke peruntukkannya semula.</p>
+                    <p>Setelah 12 tahun berjuang untuk membersihkan kawasan dari penggarap illegal dan menanami kembali pepopohonan mangrove yang hilang, akhirnya TWA Angke Kapuk dapat diresmikan pada tgl 25 Januari 2010 oleh Menteri Kehutanan saat itu Bpk. Zulkifli Hasan.</p>
+                </div>
+                <a href="javascript:void();" class="readmore-btn">Read more</a>
+            </div>
+            <div class="box">
+                <img src="image/2.jpg" alt="image-box">
+                <div class="text">
+                    <h3>FUNGSI HUTAN MANGROVE</h3>
+                    <p>Merupakan ekosistem lahan basah yang didominasi oleh pepopohonan mangrove. Kawasan konservasi sangat dibutuhkan di Jakarta, ibu kota Indonesia yang sangat kekurangan akan lahan hijau terbuka, memiliki tingkat polusi udara yang cukup tinggi serta mulai mengalami erosi dan abrasi garis pantai.</p>
+                    <p>Hutan Mangrove, selain mampu meredam gelombang besar termasuk tsunami, iapun dapat menyerap karbondioksida 5x lebih banyak daripada hutan tropis di dataran tinggi. Dan yang tak kalah pentingnya adalah fungsinya sebagai tempat habitat dan naungan bagi beberapa jenis satwa liar.</p>
+                </div>
+                <a href="javascript:void();" class="readmore-btn">Read more</a>
+            </div>
+            <div class="box">
+                <img src="image/4.jpg" alt="image-box">
+                <div class="text">
+                    <h3>AKSES TRANSPORTASI</h3>
+                    <p>Surga hijau seluas 99,82 hektar ini terletak di kelurahan Kamal Muara yang bersebelahan dengan kawasan elit Pantai Indah Kapuk di Jakarta Utara. Lokasinya membuat sangat mudah untuk dikunjungi baik melalui akses Tol dalam kota maupun Tol JORR atau dengan Transportasi Umum seperti Bis TransJakarta.</p>
+                </div>
+                <a href="javascript:void();" class="readmore-btn">Read more</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function(){
+            var wScroll = $(this).scrollTop();
+
+            //parallax
+            const parallax = document.querySelector('.sec1');
+            let scrollPosition = window.pageYOffset;
+
+            parallax.style.transform = 'translateY(' + scrollPosition *.4 + 'px)';
+
+            //fade in
+            if(wScroll > $('.container').offset().top - 650){
+                $('.container .content').addClass('muncul');
+            }
+
+            //fade in card/box
+            if(wScroll > $('.luar').offset().top - 600){
+                $('.luar .box').each(function(i){
+                    setTimeout(function(){
+                        $('.luar .box').eq(i).addClass('muncul')
+                    }, 300 * (i+1));
+                });
+            }
+        });
+
+        $(".readmore-btn").on('click', function(){
+                $(this).parent().toggleClass("showContent");
+
+                var replaceText = $(this).parent().hasClass("showContent") ? "Read Less" : "Read More"; 
+                $(this).text(replaceText);
+        });
+    </script>
+</body>
+</html>
